@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long> {
     @Override
     User save(User user); // upsert
+    User findByUsername(String username);
 }

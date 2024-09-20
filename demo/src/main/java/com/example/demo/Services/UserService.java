@@ -17,5 +17,10 @@ public class UserService {
        return userRepository.save(user);
 
    }
-
+   public User loginUser(User user) {
+       return null;
+   }
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 }
