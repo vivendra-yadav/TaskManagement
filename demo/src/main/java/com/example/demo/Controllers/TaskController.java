@@ -68,5 +68,13 @@ public class TaskController {
         return ResponseEntity.ok(tasks);
     }
 
+    @GetMapping("/tasks/search")
+    public ResponseEntity<List<Task>> searchTasks(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String description) {
+
+        List<Task> tasks = taskService.searchTasks(title, description);
+        return ResponseEntity.ok(tasks);
+    }
 }
 

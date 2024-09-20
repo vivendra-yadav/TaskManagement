@@ -57,5 +57,7 @@ public class TaskService {
     public List<Task> getTasksByUserId(Long userId) {
         return taskRepository.findByUserId(userId);
     }
-
+    public List<Task> searchTasks(String title, String description) {
+        return taskRepository.findByTitleContainingOrDescriptionContaining(title, description);
+    }
 }
