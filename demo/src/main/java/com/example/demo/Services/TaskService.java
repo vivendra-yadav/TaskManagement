@@ -1,5 +1,7 @@
 package com.example.demo.Services;
 
+import com.example.demo.Enums.Priority;
+import com.example.demo.Enums.Status;
 import com.example.demo.Models.Task;
 import com.example.demo.Repositorys.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +59,28 @@ public class TaskService {
     public List<Task> getTasksByUserId(Long userId) {
         return taskRepository.findByUserId(userId);
     }
-    public List<Task> searchTasks(String title, String description) {
-        return taskRepository.findByTitleContainingOrDescriptionContaining(title, description);
+    // Search by Title
+    public List<Task> getByTitle(String title) {
+        return taskRepository.findByTitleContaining(title);
+    }
+
+    // Search by Description
+    public List<Task> getByDescription(String description) {
+        return taskRepository.findByDescriptionContaining(description);
+    }
+
+    // Search by Status
+    public List<Task> getByStatus(Status status) {
+        return taskRepository.findByStatus(status);
+    }
+
+    // Search by Priority
+    public List<Task> getByPriority(Priority priority) {
+        return taskRepository.findByPriority(priority);
+    }
+
+    // Search by Due Date
+    public List<Task> getByDueDate(LocalDateTime dueDate) {
+        return taskRepository.findByDueDate(dueDate);
     }
 }
