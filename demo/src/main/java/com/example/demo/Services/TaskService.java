@@ -36,4 +36,12 @@ public class TaskService {
         }
         return null; // Task not found
     }
+    public boolean deleteTask(Long id) {
+        Optional<Task> existingTaskOptional = taskRepository.findById(id);
+        if (existingTaskOptional.isPresent()) {
+            taskRepository.delete(existingTaskOptional.get());
+            return true; // Task was found and deleted
+        }
+        return false; // Task not found
+    }
 }

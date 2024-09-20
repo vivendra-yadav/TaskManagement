@@ -29,5 +29,15 @@ public class TaskController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task Not Found");
         }
     }
+
+    @DeleteMapping("/deletetask/{id}")
+    public ResponseEntity<String> deleteTask(@PathVariable Long id) {
+        boolean isDeleted = taskService.deleteTask(id);
+        if (isDeleted) {
+            return ResponseEntity.ok("Task Deleted Successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task Not Found");
+        }
+    }
 }
 
